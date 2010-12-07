@@ -2,7 +2,7 @@ class CreateCache < ActiveRecord::Migration
   def self.up
     create_table :cache do |t|
       t.string   :key
-      t.string   :value
+      t.text     :value
       t.float    :created_at
       t.float    :expires_at
     end

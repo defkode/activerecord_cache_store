@@ -1,0 +1,17 @@
+Installation
+============
+
+gem install activerecord_cache_store
+
+Setup
+=====
+
+in your environment:
+
+config.cache_store = :active_record_store
+
+
+Cache Migration
+===============
+
+rails g cache_migration

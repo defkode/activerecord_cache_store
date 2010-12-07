@@ -1,3 +1,0 @@
-module ActiverecordCacheStore
-  # Your code goes here...
-end

@@ -1,3 +1,5 @@
+require "active_support/cache"
+
 class Cache < ActiveRecord::Base
   set_table_name :cache
 end

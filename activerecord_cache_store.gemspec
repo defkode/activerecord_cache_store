@@ -5,13 +5,15 @@ Gem::Specification.new do |s|
   s.name        = "activerecord_cache_store"
   s.version     = "0.0.1"
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
+  s.authors     = ["Tomasz Mazur"]
+  s.email       = ["defkode@gmail.com"]
   s.homepage    = "http://rubygems.org/gems/activerecord_cache_store"
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{ActiveRecord Cache Store for Rails 3}
+  s.description = %q{stores cache in database}
 
   s.rubyforge_project = "activerecord_cache_store"
+  s.add_dependency("activerecord", ">= 3.0.0")
+  s.add_dependency("activesupport", ">= 3.0.0")
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

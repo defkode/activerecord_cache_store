@@ -3,13 +3,14 @@ class CreateCache < ActiveRecord::Migration
     create_table :cache do |t|
       t.string   :key
       t.string   :value
-      t.datetime :created_at
-      t.datetime :expires_in
+      t.float    :expires_in
+      t.float    :created_at
+      t.float    :expires_at
     end
     
     add_index :cache, :key, :unique => true
     add_index :cache, :created_at
-    add_index :cache, :expires_in
+    add_index :cache, :expires_at
   end
 
   def self.down
@@ -17,6 +18,6 @@ class CreateCache < ActiveRecord::Migration
     
     remove_index :cache, :key
     remove_index :cache, :created_at
-    remove_index :cache, :expires_in
+    remove_index :cache, :expires_at
   end
 end

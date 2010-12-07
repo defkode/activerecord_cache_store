@@ -15,3 +15,9 @@ Cache Migration
 ===============
 
 rails g cache_migration
+
+
+Notes
+=====
+
+https://rails.lighthouseapp.com/projects/8994/tickets/4452-making-activesupportcache-consistent

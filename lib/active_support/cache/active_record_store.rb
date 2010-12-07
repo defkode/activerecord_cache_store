@@ -1,41 +1,41 @@
-require "active_support/cache"
-
-class Cache < ActiveRecord::Base
-  set_table_name :cache
-end
-
+require "active_record/cache_entry"
 
 module ActiveSupport
   module Cache
     class ActiveRecordStore < Store
-    
-      def initialize
-        super
-
-        @data = {}
+      
+      def cleanup(options = nil)
+        ::CacheEntry.expired.delete_all
       end
       
+      def clear(options = nil)
+        ::CacheEntry.delete_all
+      end
       
       private
       
-      def read_entry(key, options = nil)
-        if entry = ::Cache.find_by_key(key)
-          entry.value
-        else
-          nil
+      def read_entry(key, options)
+        if entry = ::CacheEntry.find_by_key(key)
+          entry.to_cache_entry
         end
       end
-  
-      def write_entry(key, value, options = nil)
-        entry = ::Cache.create(:key => key)
-        entry.save
+      
+      def write_entry(key, entry, options)
+        if cache = ::CacheEntry.find_by_key(key)
+          delete_entry(key, {})
+        end
+        ::CacheEntry.create!({
+          :key        => key,
+          :value      => entry.value,
+          :created_at => entry.created_at,
+          :expires_at => entry.expires_at
+        })
       end
-  
-      def delete_entry(key, options = nil)
-        log("Delete", key, options)
-        false
+      
+      def delete_entry(key, options)
+        puts "DELETE"
+        ::CacheEntry.where(:key => key).delete_all
       end
-    
     end
   end
 end

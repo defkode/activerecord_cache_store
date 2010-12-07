@@ -1,0 +1,1 @@
+require "generators/cache_generator"

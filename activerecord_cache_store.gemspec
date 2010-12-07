@@ -3,11 +3,11 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "activerecord_cache_store"
-  s.version     = "0.0.2"
+  s.version     = "0.0.3"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Tomasz Mazur"]
   s.email       = ["defkode@gmail.com"]
-  s.homepage    = "http://rubygems.org/gems/activerecord_cache_store"
+  s.homepage    = "https://github.com/defkode/activerecord_cache_store"
   s.summary     = %q{ActiveRecord Cache Store for Rails 3}
   s.description = %q{stores cache in database}
 

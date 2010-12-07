@@ -15,7 +15,19 @@ Cache Migration
 ===============
 
 rails g cache_migration
+rake db:migrate
 
+Usage
+=====
+
+<% cache do %>
+  some html
+<% end>
+
+Rails.cache.clear # clear all cache
+Rails.cache.cleanup # clear expired cache entries
+
+more about Rails caching http://guides.rubyonrails.org/caching_with_rails.html
 
 Notes
 =====

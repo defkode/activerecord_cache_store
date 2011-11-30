@@ -21,14 +21,15 @@ module ActiveSupport
       end
       
       def write_entry(key, entry, options)
-        if cache = CacheEntry.find_by_key(key)
+        if CacheEntry.find_by_key(key)
           delete_entry(key, {})
         end
         CacheEntry.create!({
-          :key        => key,
-          :value      => entry.value,
-          :created_at => entry.created_at,
-          :expires_at => entry.expires_at
+          :key            => key,
+          :value          => entry.raw_value,
+          :created_at     => entry.created_at,
+          :expires_at     => entry.expires_at,
+          :is_compressed  => entry.compressed?
         })
       end
       

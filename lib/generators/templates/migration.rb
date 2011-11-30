@@ -2,9 +2,10 @@ class CreateCache < ActiveRecord::Migration
   def self.up
     create_table :cache do |t|
       t.string   :key
-      t.text     :value
+      t.binary   :value
       t.float    :created_at
       t.float    :expires_at
+      t.boolean  :is_compressed
     end
     
     add_index :cache, :key, :unique => true
@@ -14,9 +15,5 @@ class CreateCache < ActiveRecord::Migration
 
   def self.down
     drop_table :cache
-    
-    remove_index :cache, :key
-    remove_index :cache, :created_at
-    remove_index :cache, :expires_at
   end
 end

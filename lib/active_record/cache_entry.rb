@@ -12,6 +12,6 @@ class CacheEntry < ActiveRecord::Base
   end
   
   def to_cache_entry
-    ActiveSupport::Cache::Entry.create(value, created_at, :expires_in => expires_in)
+    ActiveSupport::Cache::Entry.create(value, created_at, :expires_in => expires_in, :compressed => is_compressed)
   end
 end

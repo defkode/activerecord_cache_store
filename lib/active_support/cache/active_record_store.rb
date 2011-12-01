@@ -31,6 +31,9 @@ module ActiveSupport
           :expires_at     => entry.expires_at,
           :is_compressed  => entry.compressed?
         })
+      rescue ActiveRecord::ActiveRecordError => e
+        logger.error("ActiveRecordCacheError (#{e}): #{e.message}") if logger
+        false
       end
       
       def delete_entry(key, options)

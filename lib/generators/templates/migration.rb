@@ -3,8 +3,8 @@ class CreateCache < ActiveRecord::Migration
     create_table :cache do |t|
       t.string   :key
       t.binary   :value
-      t.float    :created_at
-      t.float    :expires_at
+      t.decimal  :created_at, :precision => 15, :scale => 5
+      t.decimal  :expires_at, :precision => 15, :scale => 5
       t.boolean  :is_compressed
     end
     

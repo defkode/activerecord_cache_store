@@ -1,7 +1,6 @@
 class CreateCache < ActiveRecord::Migration
   def self.up
-    create_table :cache, :id => false do |t|
-      t.integer  :id, :limit => 8, :unsigned => true
+    create_table :cache do |t|
       t.string   :key
       t.binary   :value
       t.decimal  :created_at, :precision => 15, :scale => 5

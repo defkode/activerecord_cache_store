@@ -1,7 +1,7 @@
 class CacheEntry < ActiveRecord::Base
   set_table_name :cache
   
-  validates :key,        :presence => true, :uniqueness => true
+  validates :key,        :presence => true
   validates :created_at, :presence => true
   
   scope :expired, lambda { where("expires_at < ?", Time.now.to_f) }
